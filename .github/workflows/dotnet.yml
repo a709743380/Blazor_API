@@ -18,7 +18,8 @@ jobs:
    # 修改成專案名稱    
     - name: Publish .NET Core Project
       run: dotnet publish VscodeBlazor.csproj -c Release -o release --nologo
-      
+    - name: finish
+      run: echo "dotnet publish VscodeBlazor.csproj -c Release -o release --nologo"
     # 修改 index.html 的 base href 設定
     - name: 修改 index.html 的 base href 設定
       run: sed -i 's/<base href="\/" \/>/<base href="\/VscodeBlazor\/" \/>/g' release/wwwroot/index.html
@@ -29,17 +30,6 @@ jobs:
     # 複製 index.html 成 404.html
     - name: 複製 index.html 成 404.html
       run: cp wwwroot/index.html /wwwroot/404.html
-      
-    - name: Check if gh-pages branch exists
-      run: |
-        if ! git rev-parse --verify gh-pages; then
-          git checkout --orphan gh-pages
-          git rm -rf .
-          touch .nojekyll
-          git add .nojekyll
-          git commit -m "Initial commit"
-          git push origin gh-pages
-        fi
       
     - name: Commit wwwroot to GitHub Pages
       with:
