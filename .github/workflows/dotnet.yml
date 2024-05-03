@@ -34,7 +34,6 @@ jobs:
       run: cp wwwroot/index.html /wwwroot/404.html
       
     - name: Commit wwwroot to GitHub Pages
-      uses: a709743380/github-pages-deploy-action@v7.0.0
       with:
           BRANCH: gh-pages
           FOLDER: release/wwwroot
