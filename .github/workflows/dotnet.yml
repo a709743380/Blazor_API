@@ -25,7 +25,7 @@ jobs:
       run: echo "dotnet publish VscodeBlazor.csproj -c Release -o release --nologo"
       
     - name: Modify base href in index.html
-      run: sed -i 's/<base href="\/" \/>/<base href="\/VscodeBlazor\/" \/>/g' release/wwwroot/index.html
+      run: sed -i 's/<base href="\/" \/>/<base href="\/Blazor_API\/" \/>/g' release/wwwroot/index.html
         
     - name: Create .nojekyll file
       run: touch wwwroot/.nojekyll
